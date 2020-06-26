@@ -1,0 +1,99 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.MainWindow"
+        mc:Ignorable="d"
+    
+        Title="Project_4579_3796_dotNet5779" SizeToContent="WidthAndHeight" >
+
+    <TabControl  Background="#545d64" Height="450" Width="994" >
+
+        <TabItem Header="Admin" Background="#545d64" Foreground="Black" Margin="-2,14,-2,-16"  >
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background= "Black" CornerRadius="20" Margin="5,10,-3,10" Padding="10" Width="986" Height="390" >
+                <StackPanel Background="#2e3137" Margin="22,10,26,10" HorizontalAlignment="Center" Width="918" >
+
+                    <Label  Content="login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                    <Separator></Separator>
+
+                    <Label x:Name="UserLabel" Content="Usernem"  HorizontalAlignment="Center" Foreground="White"></Label>
+
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                        <Viewbox Width="20" Height="20" Margin="3">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" Fill="Black" />
+                            </Canvas>
+                        </Viewbox>
+
+                        <TextBox x:Name="UserTextbox" KeyDown="UserTextbox_KeyDown"  Margin="5" Background="#545d64" Text="Admin" Foreground="Wheat" FontSize="18"   Width="186" TextChanged="UserTextbox_TextChanged"   ></TextBox>
+
+                    </StackPanel>
+                    <Label x:Name="passwordLabel"  HorizontalAlignment="Center"  Content="password" Foreground="White"  />
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                        <Viewbox Width="20" Height="20" Margin="3">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="M22,18V22H18V19H15V16H12L9.74,13.74C9.19,13.91 8.61,14 8,14A6,6 0 0,1 2,8A6,6 0 0,1 8,2A6,6 0 0,1 14,8C14,8.61 13.91,9.19 13.74,9.74L22,18M7,5A2,2 0 0,0 5,7A2,2 0 0,0 7,9A2,2 0 0,0 9,7A2,2 0 0,0 7,5Z" Fill="Black" />
+                            </Canvas>
+                        </Viewbox>
+                        <PasswordBox x:Name="passworduser" KeyDown="Passworduser_KeyDown" Margin="5" Background="#545d64" Foreground="Wheat" FontSize="18"  Width="186"/>
+
+                    </StackPanel>
+                    <Button x:Name="buttonl" KeyDown="Buttonl_KeyDown" Content="Login" Margin="10"  FontSize="18" Background="#545d64" Foreground="White" HorizontalAlignment="Center" Click="Buttonl_Click" />
+
+                </StackPanel>
+            </Border>
+
+
+        </TabItem>
+        <!--<TabItem Header="Tester" Foreground="Black"  Background="#545d64" >
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background= "#04c582" CornerRadius="20" Margin="15,10,23,10" Padding="10" Width="950" Height="376" >
+                <StackPanel Background="#2e3137" Margin="24,10,18,10" HorizontalAlignment="Center" Width="888" >
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                        <Label  Content="login " Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                        <Label Content="tester" Foreground="White" Margin="-6 13 0 0 "></Label>
+                    </StackPanel>
+                    <Separator></Separator>
+                    <Label x:Name="testerIDLabel"  HorizontalAlignment="Center" Content="Please Enter Your ID" Foreground="White"></Label>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                        <Viewbox Width="20" Height="20" Margin="3">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="M2,3H22C23.05,3 24,3.95 24,5V19C24,20.05 23.05,21 22,21H2C0.95,21 0,20.05 0,19V5C0,3.95 0.95,3 2,3M14,6V7H22V6H14M14,8V9H21.5L22,9V8H14M14,10V11H21V10H14M8,13.91C6,13.91 2,15 2,17V18H14V17C14,15 10,13.91 8,13.91M8,6A3,3 0 0,0 5,9A3,3 0 0,0 8,12A3,3 0 0,0 11,9A3,3 0 0,0 8,6Z" Fill="Black" />
+                            </Canvas>
+                        </Viewbox>
+
+                        <TextBox x:Name="testerIDTextbox"  Margin="5" Background="#545d64"  Foreground="Wheat" FontSize="18"   Width="186"></TextBox>
+
+                    </StackPanel>
+                    <Button x:Name="testerbutton" Content="Login" Margin="10"  FontSize="18" Background="#545d64" Foreground="White" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </TabItem>
+        <TabItem Header="Trainee" Foreground="Black"  Background="#545d64">
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background= "#04c582" CornerRadius="20" Margin="17,10,11,10" Padding="10" Width="960" Height="374" >
+                <StackPanel Background="#2e3137" Margin="17,10,21,10" HorizontalAlignment="Center" Width="902" >
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                        <Label  Content="login " Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                        <Label Content="trainee" Foreground="White" Margin="-6 13 0 0 "></Label>
+                    </StackPanel>
+                    <Separator></Separator>
+                    <Label x:Name="traineeIDLabel"  HorizontalAlignment="Center" Content="Please Enter Your ID" Foreground="White"></Label>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                        <Viewbox Width="20" Height="20" Margin="3">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="M2,3H22C23.05,3 24,3.95 24,5V19C24,20.05 23.05,21 22,21H2C0.95,21 0,20.05 0,19V5C0,3.95 0.95,3 2,3M14,6V7H22V6H14M14,8V9H21.5L22,9V8H14M14,10V11H21V10H14M8,13.91C6,13.91 2,15 2,17V18H14V17C14,15 10,13.91 8,13.91M8,6A3,3 0 0,0 5,9A3,3 0 0,0 8,12A3,3 0 0,0 11,9A3,3 0 0,0 8,6Z" Fill="Black" />
+                            </Canvas>
+                        </Viewbox>
+
+                        <TextBox x:Name="traineeIDTextbox"  Margin="5" Background="#545d64"  Foreground="Wheat" FontSize="18"   Width="186"></TextBox>
+
+                    </StackPanel>
+                    <Button x:Name="traineebutton" Content="Login" Margin="10"  FontSize="18" Background="#545d64" Foreground="White" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </TabItem>-->
+
+    </TabControl>
+
+</Window>

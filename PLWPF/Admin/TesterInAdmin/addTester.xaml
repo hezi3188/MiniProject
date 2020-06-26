@@ -1,0 +1,79 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.Admin.TesterInAdmin"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Admin.TesterInAdmin.addTester"
+        mc:Ignorable="d"
+        Title="addTester" Height="450" Width="530" >
+    <Grid>
+        <Grid x:Name="gridPnimi"  Margin="0,-1,0.2,1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="105*"/>
+                <ColumnDefinition Width="157*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="gridLuzAndButton" Margin="0,1,0.6,-1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="43*"/>
+                    <RowDefinition Height="142*"/>
+                    <RowDefinition Height="169*"/>
+                    <RowDefinition Height="66*"/>
+                </Grid.RowDefinitions>
+                <local:luz x:Name="myLuz" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="209" Margin="0,0.8,0,0" Grid.Row="1" DataContextChanged="GenderComboBox_DataContextChanged"/>
+                <Label x:Name="luzLable" Content="Label" />
+                <Button x:Name="buttonSaveT" IsEnabled="False" Content="save" Grid.Row="3" Click="button_Click" />
+            </Grid>
+            <Grid x:Name="grid1" Grid.Column="1" HorizontalAlignment="Left" Margin="0.4,1,0,0" VerticalAlignment="Top" Height="416" Width="313">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Date Of Birth:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <DatePicker x:Name="dateOfBirthDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,0,0,4" Grid.Row="0" SelectedDate="{Binding DateOfBirth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Bottom" />
+                <Label Content="First Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                <TextBox x:Name="firstNameTextBox"   PreviewTextInput="FirstNameTextBox_PreviewTextInput"  KeyDown="FirstNameTextBox_KeyDown"  Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="7,4,-1,4" Grid.Row="1" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TextChanged="FirstNameTextBox_TextChanged"/>
+                <Label Content="gender:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                <ComboBox x:Name="genderComboBox" KeyDown="GenderComboBox_KeyDown" IsEnabled="{Binding ElementName=firstNameTextBox, Path=IsInputMethodEnabled}" Grid.Column="1" SelectedItem="{Binding gender}" HorizontalAlignment="Left" Height="Auto"  Margin="3,0,0,5" Grid.Row="2" VerticalAlignment="Bottom" Width="120" SelectionChanged="GenderComboBox_SelectionChanged" DataContextChanged="GenderComboBox_DataContextChanged" >
+                </ComboBox>
+                <Label Content="ID:"   Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                <TextBox x:Name="iDTextBox" PreviewTextInput="IDTextBox_PreviewTextInput"   KeyDown="Label_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,0,0,4" Grid.Row="3" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Bottom" Width="120" TextChanged="FirstNameTextBox_TextChanged"/>
+                <Label Content="Last Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                <TextBox x:Name="lastNameTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  KeyDown="LastNameTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,0" Grid.Row="4" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="120" TextChanged="FirstNameTextBox_TextChanged"/>
+                <Label Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center" />
+                <TextBox x:Name="phoneNumberTextBox"  PreviewTextInput="IDTextBox_PreviewTextInput"  KeyDown="PhoneNumberTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="5,4,0,4" Grid.Row="5" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TextChanged="FirstNameTextBox_TextChanged"/>
+                <Label Content="Tester Car Tip:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                <ComboBox x:Name="tester_CarTipComboBox" KeyDown="Tester_CarTipComboBox_KeyDown" Grid.Column="1"  HorizontalAlignment="Left" SelectedItem="{Binding Tester_CarTip}" Height="Auto"  Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120" DataContextChanged="GenderComboBox_DataContextChanged">
+                </ComboBox>
+                <Label Content="Tester Experience:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+                <TextBox x:Name="tester_ExperienceTextBox"  PreviewTextInput="IDTextBox_PreviewTextInput"  KeyDown="Tester_ExperienceTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,0,0,4" Grid.Row="7" Text="{Binding Tester_Experience, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Bottom" Width="120" TextChanged="FirstNameTextBox_TextChanged"/>
+                <Label Content="Tester Max Distance:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
+                <TextBox x:Name="tester_MaxDistanceTextBox" KeyDown="Tester_MaxDistanceTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding Tester_MaxDistance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TextChanged="FirstNameTextBox_TextChanged"/>
+                <Label Content="Tester Maximum Tests Per Week:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
+                <TextBox x:Name="tester_MaximumTestsPerWeekTextBox"  PreviewTextInput="IDTextBox_PreviewTextInput"  KeyDown="Tester_MaximumTestsPerWeekTextBox_KeyDown" TextChanged="FirstNameTextBox_TextChanged" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding Tester_MaximumTestsPerWeek, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Building Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
+                <TextBox x:Name="buildingNumberTextBox"  PreviewTextInput="IDTextBox_PreviewTextInput"  KeyDown="BuildingNumberTextBox_KeyDown" TextChanged="FirstNameTextBox_TextChanged" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="10" Text="{Binding addres.BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="City:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
+                <TextBox x:Name="cityTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  KeyDown="CityTextBox_KeyDown" TextChanged="FirstNameTextBox_TextChanged" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="11" Text="{Binding addres.City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Street:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="12" VerticalAlignment="Center"/>
+                <TextBox x:Name="streetTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  TextChanged="FirstNameTextBox_TextChanged" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="12" Text="{Binding addres.Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,53 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF.Admin.TraineeInAdmin"
+             xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Admin.TraineeInAdmin.traineeData"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="352.4" >
+    <Grid>
+        <ScrollViewer Background="White" Margin="10,10,10,0">
+
+            <Grid x:Name="grid1"  VerticalAlignment="Top" Margin="10,10,0,0" HorizontalAlignment="Left" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="First Name:"/>
+                <TextBox x:Name="firstNameTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  Width="120" VerticalAlignment="Center" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Last Name:"/>
+                <TextBox x:Name="lastNameTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  Width="120" VerticalAlignment="Center" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="My Teacher:"/>
+                <TextBox x:Name="my_TeacherTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  Width="120" VerticalAlignment="Center" Text="{Binding My_Teacher, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:"/>
+                <TextBox x:Name="phoneNumberTextBox"  PreviewTextInput="PhoneNumberTextBox_PreviewTextInput"  Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="School name:"/>
+                <TextBox x:Name="school_nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding School_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Trainee Car Tip:"/>
+                <ComboBox x:Name="trainee_CarTipTextBoxComboBox" Width="120" VerticalAlignment="Center" SelectedItem="{Binding Trainee_CarTip}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Building Number:"/>
+                <TextBox x:Name="buildingNumberTextBox"  PreviewTextInput="PhoneNumberTextBox_PreviewTextInput"  Width="120" VerticalAlignment="Center" Text="{Binding addres.BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="City:"/>
+                <TextBox x:Name="cityTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  Width="120" VerticalAlignment="Center" Text="{Binding addres.City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="9" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Street:"/>
+                <TextBox x:Name="streetTextBox"  PreviewTextInput="FirstNameTextBox_PreviewTextInput"  Width="120" VerticalAlignment="Center" Text="{Binding addres.Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="9" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            </Grid>
+
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

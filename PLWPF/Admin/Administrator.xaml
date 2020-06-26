@@ -1,0 +1,169 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.Admin"
+        xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:TesterInAdmin="clr-namespace:PLWPF.Admin.TesterInAdmin" x:Class="PLWPF.Admin.Administrator"
+        mc:Ignorable="d"
+        Title="Administrator"  Loaded="Window_Loaded"  >
+    <Window.Resources>
+        <CollectionViewSource x:Key="testerViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Tester}, CreateList=True}"/>
+        <CollectionViewSource x:Key="traineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee}, CreateList=True}"/>
+        <CollectionViewSource x:Key="testViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Test}, CreateList=True}"/>
+    </Window.Resources>
+
+    <TabControl  >
+
+        <TabItem Header="Test"  Background="#545d64" Foreground="White"   >
+            <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background= "Black" CornerRadius="20"  Padding="10" Margin="0,0,0,-8" >
+                <StackPanel Background="White" >
+                    <Grid x:Name="gridTest" Height="451" DataContext="{StaticResource testViewSource}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="289*"/>
+                            <ColumnDefinition Width="258*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="addAndUpdateTest"  Content="add test" Click="button1_Click"   Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,165,2"/>
+                        <Button x:Name="deleteButtonTest"  Width="150" Height="50" Content="delete test" Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="deleteButton1_Click" Margin="0,0,-1,2"/>
+
+                        <Grid x:Name="gridTetMenu" Background="White" HorizontalAlignment="Right" Width="733" Grid.ColumnSpan="2" VerticalAlignment="Top"  Margin="0,0,1,0" >
+                            <ComboBox x:Name="comboBoxTestOption" HorizontalAlignment="Right" Margin="0,60,5,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBoxTestOption_SelectionChanged"/>
+                            <ComboBox x:Name="comboBoxTestCarTip" HorizontalAlignment="Right" Margin="0,60,130,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBoxTestCarTip_SelectionChanged"/>
+                            <Button x:Name="buttonGetTest" Content="view test" HorizontalAlignment="Right" Margin="0,100,5,0" VerticalAlignment="Top" Width="75" Click="buttonGetTest_Click"/>
+                            <TextBox x:Name="textBoxSearchTest" HorizontalAlignment="Right" Height="23" Margin="152,10,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBoxSearchTest_TextChanged"/>
+                            <Label x:Name="labelSearchTest" Content="Search" HorizontalAlignment="Right" Margin="0,10,120,0" VerticalAlignment="Top"/>
+                        </Grid>
+                        <DataGrid x:Name="testDataGrid" IsReadOnly="True" AutoGenerateColumns="False" Grid.ColumnSpan="2" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,124,-1,57" RowDetailsVisibilityMode="VisibleWhenSelected" MouseDoubleClick="testDataGrid_MouseDoubleClick">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn x:Name="successColumn" Binding="{Binding Success}" Header="Success" />
+                                <DataGridTextColumn x:Name="test_DateColumn" Binding="{Binding Test_Date}" Header="Test Date" />
+                                <DataGridTextColumn x:Name="test_NumberColumn" Binding="{Binding Test_Number}" Header="Test Number" />
+                                <DataGridTextColumn x:Name="test_TypeColumn" Binding="{Binding Test_Type}" Header="Test Type" />
+                                <DataGridTextColumn x:Name="tester_IDColumn" Binding="{Binding Tester_ID}" Header="Tester ID" />
+                                <DataGridTextColumn x:Name="trainee_IDColumn" Binding="{Binding Trainee_ID}" Header="Trainee ID"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+
+        </TabItem>
+        <TabItem Header="Tester"  Background="#545d64" Foreground="White" Margin="0,-2,-4,0">
+            <Border   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background= "Black" CornerRadius="20"  Padding="10" Margin="0,0,0,-8" >
+                <Grid Margin="17,3,18,3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="339*"/>
+                        <ColumnDefinition Width="332*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel   Background="White"    DataContext="{StaticResource testerViewSource}" Grid.ColumnSpan="2" Margin="-15,1,-15,1"    >
+                        <Grid x:Name="gridPnimi" Height="397" Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Name="pnimi1" Width="340*"/>
+                                <ColumnDefinition Name="pnimi2" Width="331*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="addAndUpdateButtonTester" Content="add tester" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,165,-50"  Width="150" Height="50" Click="addAndUpdateButton_Click" Grid.Column="1"/>
+                            <Button x:Name="deleteButton" Content="delete" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,2,-50"   Width="150" Height="50" Click="deleteButton_Click"/>
+                            <Grid x:Name="gridTesterMenu" Background="White" Grid.ColumnSpan="2" Height="124" VerticalAlignment="Top">
+                                <TextBox x:Name="TextBoxTesterSearch" VerticalAlignment="Top"  HorizontalAlignment="Right" Height="23" Margin="152,10,5,0" TextWrapping="Wrap" Width="120" TextChanged="TextBoxTesterSearch_TextChanged"/>
+                                <Label x:Name="labelTesterSearch" Content="Search " HorizontalAlignment="Right" Margin="0,10,120,0" VerticalAlignment="Top" />
+                                <ComboBox x:Name="comboBoxTesterOption" SelectedItem="All_Testers"  HorizontalAlignment="Right" Margin="0,60,5,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBoxTesterOptions_SelectionChanged"/>
+                                <ComboBox x:Name="comboBoxTesterCarTip" HorizontalAlignment="Right" Margin="0,60,130,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBoxTesterCarTip_SelectionChanged"/>
+                                <Button x:Name="buttonGetTester" Content="view tester" HorizontalAlignment="Right" Margin="0,100,5,0" VerticalAlignment="Top" Width="75"  Click="buttonGetTester_Click"/>
+                            </Grid>
+                            <DataGrid x:Name="testerDataGrid" IsReadOnly="True" AutoGenerateColumns="False" Grid.ColumnSpan="2" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,124,10.6,10" RowDetailsVisibilityMode="VisibleWhenSelected" MouseDoubleClick="testerDataGrid_MouseDoubleClick_1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="dateOfBirthColumn" Binding="{Binding DateOfBirth}" Header="Date Of Birth" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="firstNameColumn1" Binding="{Binding FirstName}" Header="First Name" />
+                                    <DataGridTextColumn x:Name="genderColumn" Binding="{Binding gender}" Header="gender"/>
+                                    <DataGridTextColumn x:Name="iDColumn1" Binding="{Binding ID}" Header="ID" />
+                                    <DataGridTextColumn x:Name="lastNameColumn1" Binding="{Binding LastName}" Header="Last Name" />
+                                    <DataGridTextColumn x:Name="phoneNumberColumn" Binding="{Binding PhoneNumber}" Header="Phone Number" />
+                                    <DataGridTextColumn x:Name="tester_CarTipColumn" Binding="{Binding Tester_CarTip}" Header="Tester Car Tip" />
+                                    <DataGridTextColumn x:Name="tester_ExperienceColumn" Binding="{Binding Tester_Experience}" Header="Tester Experience" />
+                                    <DataGridTextColumn x:Name="tester_MaxDistanceColumn" Binding="{Binding Tester_MaxDistance}" Header="Tester Max Distance" />
+                                    <DataGridTextColumn x:Name="tester_MaximumTestsPerWeekColumn" Binding="{Binding Tester_MaximumTestsPerWeek}" Header="Tester Maximum Tests Per Week" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+
+                    </StackPanel>
+
+
+
+
+
+                </Grid>
+
+
+
+
+
+            </Border>
+        </TabItem>
+        <TabItem Header="Trainee" Foreground="White"  Background="#545d64">
+            <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background= "Black" CornerRadius="20"  Padding="10" Margin="0,0,0,-8">
+                <StackPanel  Background="White" Margin="5 5 5 5"  >
+                    <Grid x:Name="gridPnimi1" Height="407" Width="auto" Margin="0,0,0.4,0" DataContext="{StaticResource traineeViewSource}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="362*"/>
+                            <ColumnDefinition Width="365*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="addAndUpdateButtonTrainee" Content="add trainee" Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Margin="0,0,165,2"  Click="addAndUpdateButtonTrainee_Click" Grid.Column="1"/>
+                        <Button x:Name="deleteButtonTrainee" Content="delete" HorizontalAlignment="Right"  Grid.Column="1" Click="deleteButtonTrainee_Click" Width="150" Height="50" VerticalAlignment="Top" Margin="0,357,0,0"/>
+
+                        <Grid x:Name="gridTraineeMenu" Background="White" Grid.ColumnSpan="2" Height="124" VerticalAlignment="Top">
+                            <TextBox x:Name="searchTraineeTextBox"  VerticalAlignment="Top"  HorizontalAlignment="Right" Height="23" Margin="152,10,5,0" TextWrapping="Wrap" Width="120" TextChanged="searchTraineeTextBox_TextChanged"/>
+                            <Label x:Name="labelSearchTrainee" Content="Search " HorizontalAlignment="Right" Margin="0,10,120,0" VerticalAlignment="Top" />
+                            <ComboBox x:Name="comboBoxTraineOption"  HorizontalAlignment="Right" Margin="0,60,5,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBoxTraineOption_SelectionChanged"/>
+                            <ComboBox x:Name="comboBoxTraineeCarTip" IsEnabled="False"  HorizontalAlignment="Right" Margin="0,60,130,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.119,0.518" SelectionChanged="comboBoxTraineeCarTip_SelectionChanged">
+                                <ComboBox.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=comboBoxTraineOption,Path=SelectedIndex}" Value="0"  >
+                                                <Setter Property="ComboBox.IsEnabled" Value="False"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ComboBox.Style>
+                            </ComboBox>
+                            <Button x:Name="buttonGetTrainee"  Content="view trainee" HorizontalAlignment="Right" Margin="0,100,5,0" VerticalAlignment="Top" Width="75"  Click="buttonGetTrainee_Click">
+                                <!--<Button.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=comboBoxTraineeCarTip,Path=}" Value=""  >
+                                                <Setter Property="ComboBox.IsEnabled" Value="False"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>-->
+
+                            </Button>
+                        </Grid>
+                        <DataGrid x:Name="traineeDataGrid" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,129,0.4,57" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2" MouseDoubleClick="traineeDataGrid_MouseDoubleClick">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="dateOfBirthColumn1" Binding="{Binding DateOfBirth}" Header="Date Of Birth" Width="SizeToHeader" />
+                                <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding FirstName}" Header="First Name" />
+                                <DataGridTextColumn x:Name="genderColumn1" Binding="{Binding gender}" Header="gender" />
+                                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" />
+                                <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Last Name" />
+                                <DataGridTextColumn x:Name="my_TeacherColumn" Binding="{Binding My_Teacher}" Header="My Teacher" />
+                                <DataGridTextColumn x:Name="num_TestsColumn" Binding="{Binding Num_Tests}" Header="Num Tests" />
+                                <DataGridTextColumn x:Name="numberOfLessonColumn" Binding="{Binding NumberOfLesson}" Header="Number Of Lesson" />
+                                <DataGridTextColumn x:Name="phoneNumberColumn1" Binding="{Binding PhoneNumber}" Header="Phone Number" />
+                                <DataGridTextColumn x:Name="school_nameColumn" Binding="{Binding School_name}" Header="School name" />
+                                <DataGridTextColumn x:Name="trainee_CarTipColumn" Binding="{Binding Trainee_CarTip}" Header="Trainee Car Tip" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        </TabItem>
+
+    </TabControl>
+
+</Window>
